@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { View, StatusBar, Button } from "react-native";
+import { View, ActivityIndicator, Button } from "react-native";
 
 export default function App() {
-  const [isStatusBarVisible, setIsStatusBarVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <View style={{ flex: 1, backgroundColor: "plum", padding: 60 }}>
-      <StatusBar
-        backgroundColor="lightgreen"
-        barStyle="dark-content"
-        hidden={isStatusBarVisible}
+      <ActivityIndicator />
+      <ActivityIndicator size="large" />
+      <ActivityIndicator size="large" color="midnightblue" />
+      <ActivityIndicator
+        size="large"
+        color="midnightblue"
+        animating={isVisible}
       />
-      <Button
-        title="Show/Hide"
-        onPress={() => setIsStatusBarVisible(!isStatusBarVisible)}
-      />
+      <Button title="Show" onPress={() => setIsVisible(!isVisible)} />
     </View>
   );
 }
