@@ -1,20 +1,28 @@
-import { useState } from "react";
-import { View, ActivityIndicator, Button } from "react-native";
+import { View, Button, Alert } from "react-native";
 
 export default function App() {
-  const [isVisible, setIsVisible] = useState(false);
-
   return (
     <View style={{ flex: 1, backgroundColor: "plum", padding: 60 }}>
-      <ActivityIndicator />
-      <ActivityIndicator size="large" />
-      <ActivityIndicator size="large" color="midnightblue" />
-      <ActivityIndicator
-        size="large"
-        color="midnightblue"
-        animating={isVisible}
+      <Button title="Alert" onPress={() => Alert.alert("Invalid data")} />
+      <Button
+        title="Alert 2"
+        onPress={() => Alert.alert("Invalid data", "DOB incorrect")}
       />
-      <Button title="Show" onPress={() => setIsVisible(!isVisible)} />
+      <Button
+        title="Alert 3"
+        onPress={() =>
+          Alert.alert("Invalid data", "DOB incorrect", [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel pressed"),
+            },
+            {
+              text: "OK",
+              onPress: () => console.log("OK pressed"),
+            },
+          ])
+        }
+      />
     </View>
   );
 }
